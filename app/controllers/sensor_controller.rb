@@ -4,5 +4,6 @@ class SensorController < ApplicationController
 
   def new
     puts params
+    render plain: "OK"
   end
 end
