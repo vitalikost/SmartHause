@@ -4,7 +4,7 @@ class SensorController < ApplicationController
   end
 
   def new
-    puts params
+    puts "Temperatuta:"+params[:t]+" Humidity:"+params[:h]
     render plain: "OK"
   end
 end
