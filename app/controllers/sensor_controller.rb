@@ -13,7 +13,7 @@ class SensorController < ApplicationController
       @sensor = Sensor.find_by_sensor(Base64.decode64(params[:sensor]))
       if @sensor
         puts "Name sensor:"+@sensor.name
-        puts "Temperatuta:"+params[:t]+" Humidity:"+params[:h]
+        puts "Temperatuta:"+params[:param1]+" Humidity:"+params[:param2]
       end
       render plain: "OK"
     else
