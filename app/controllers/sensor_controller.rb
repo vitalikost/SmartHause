@@ -6,7 +6,18 @@ class SensorController < ApplicationController
 
   def new
     #puts "Temperatuta:"+params[:t]+" Humidity:"+params[:h]
-    puts Base64.decode64(params[:sensor])
-    render plain: "OK"
+
+
+    if params[:sensor].present?
+
+      @sensor = Sensor.find_by_sensor(Base64.decode64(params[:sensor]))
+      if @sensor
+        puts "Name sensor:"+@sensor.name
+        puts "Temperatuta:"+params[:t]+" Humidity:"+params[:h]
+      end
+      render plain: "OK"
+    else
+      render plain: "Error data"
+    end
   end
 end
