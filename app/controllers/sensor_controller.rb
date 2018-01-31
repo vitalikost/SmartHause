@@ -11,7 +11,7 @@ class SensorController < ApplicationController
         puts "Name sensor:"+@sensor.name
         puts "Temperatuta:"+params[:param1]+" Humidity:"+params[:param2]
 
-        @value = @sensor.sensor_values.build(sendor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
+        @value = @sensor.sensor_values.build(sensor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
         @value.save
       end
       render plain: "OK"
