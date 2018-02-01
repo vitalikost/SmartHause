@@ -2,6 +2,7 @@
 
     <% @sensors.each do |sensor| %>
     <%= link_to sensor.name, sensor_show_path(id:sensor) %>
+    <p>
     <% end %>
 
 
