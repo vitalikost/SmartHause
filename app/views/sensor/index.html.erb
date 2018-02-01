@@ -1,2 +1,7 @@
-<h1>Sensor#index</h1>
-<p>Find me in app/views/sensor/index.html.erb</p>
+<h1>Достутные сенсоры</h1>
+
+    <% @sensors.each do |sensor| %>
+    <%= link_to sensor.name, sensor_show_path(id:sensor) %>
+    <% end %>
+
+

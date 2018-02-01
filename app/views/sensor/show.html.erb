@@ -1,0 +1,16 @@
+<%= @sensor.name %>
+<table>
+  <tr>
+    <th width="150">Время:</th>
+    <th width="50">Показатель1</th>
+    <th width="50">Показатель2</th>
+  </tr>
+
+  <tr>
+    <% @sensor.sensor_values.each do |val| %>
+        <td><%= val.created_at %></td>
+        <td><%= val.value1 %></td>
+        <td><%= val.value2 %></td>
+    <% end %>
+  </tr>
+</table>

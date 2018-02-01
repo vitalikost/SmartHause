@@ -2,6 +2,11 @@ class SensorController < ApplicationController
   skip_before_action :verify_authenticity_token
   require "base64"
   def index
+    @sensors = Sensor.all
+  end
+
+  def show
+    @sensor = Sensor.find(params[:id])
   end
 
   def new
