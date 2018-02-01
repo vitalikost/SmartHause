@@ -21,7 +21,7 @@ class SensorController < ApplicationController
         @param_value[1]="Давление, мм/р.т."
       end
 
-      @sensor_values = @sensor.sensor_values.order("created_at ASC").limit(100)
+      @sensor_values = @sensor.sensor_values.order("created_at DESC").limit(100)
 
     end
   end
