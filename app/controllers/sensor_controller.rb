@@ -7,14 +7,22 @@ class SensorController < ApplicationController
 
   def show
     @sensor = Sensor.find(params[:id])
-    @param_value = ["",""]
-    if @sensor.model == "dht"
-      @param_value[0]="Температура, С"
-      @param_value[1]="Влажность, %"
-    end
-    if @sensor.model == "bmp180"
-      @param_value[0]="Температура, С"
-      @param_value[1]="Давление, мм/р.т."
+
+    if @sensor
+
+      @param_value = ["",""]
+      if @sensor.model == "dht"
+        @param_value[0]="Температура, С"
+        @param_value[1]="Влажность, %"
+      end
+
+      if @sensor.model == "bmp180"
+        @param_value[0]="Температура, С"
+        @param_value[1]="Давление, мм/р.т."
+      end
+
+      @sensor_values = @sensor.sensor_values.order("created_at ASC").limit(100)
+
     end
   end
 
