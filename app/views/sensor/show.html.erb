@@ -1,18 +1,72 @@
 <h1><%= @sensor.name %></h1>
-<table id="sensor_values">
-  <tr>
 
+<canvas id="line-chart" width="450" height="320"></canvas>
+
+<table id="sensor_values" class="table">
+  <tr>
     <th width="150">Время:</th>
     <th width="50"><%= @param_value[0] %></th>
     <th width="50"><%= @param_value[1] %></th>
   </tr>
-   <% @sensor_values.each do |val| %>
+
+  <%  @label_arrey = [] %>
+  <%  @data1_arrey = [] %>
+  <%  @data2_arrey = [] %>
+  <%  i=0 %>
+  <% @sensor_values.each do |val| %>
       <tr>
         <td><%= val.created_at+7200 %></td>
         <td><%= val.value1 %></td>
         <td><%= val.value2 %></td>
       </tr>
-   <% end %>
+    <%  i=i+1 %>
+    <%  @label_arrey.push(i) %>
+    <%  @data1_arrey.push(val.value1) %>
+    <%  @data2_arrey.push(val.value2) %>
+
+
+
+<% end %>
 
 </table>
 
+<%= @label_arrey %>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+
+        new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+           // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+            labels: <%= @label_arrey %>,
+            datasets: [{
+               // data: [1,2,3],
+                data: <%= @data1_arrey.reverse %>,
+
+                // label: "Africa",
+                label: "<%= @param_value[0] %>",
+
+                borderColor: "#3e95cd",
+                fill: false
+            }, {
+                    // data: [1,2,3],
+                    data: <%= @data2_arrey.reverse %>,
+
+                    // label: "Africa",
+                    label: "<%= @param_value[1] %>",
+
+                    borderColor: "#39cd1f",
+                    fill: false
+                }
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Показники:'
+            }
+        }
+    });
+</script>
