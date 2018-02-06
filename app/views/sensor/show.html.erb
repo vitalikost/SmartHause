@@ -1,3 +1,5 @@
+
+
 <h1><%= @sensor.name %></h1>
 
 <canvas id="line-chart" width="450" height="320"></canvas>
@@ -20,7 +22,7 @@
         <td><%= val.value2 %></td>
       </tr>
     <%  i=i+1 %>
-    <%  @label_arrey.push(i) %>
+    <%  .push((val.created_at+7200).time.to_s) %>
     <%  @data1_arrey.push(val.value1) %>
     <%  @data2_arrey.push(val.value2) %>
 
@@ -39,7 +41,11 @@
         type: 'line',
         data: {
            // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-            labels: <%= @label_arrey %>,
+            labels: [
+            <% @label_arrey.each do |val| %>
+                "<%= val %>",
+            <% end %>
+            ],
             datasets: [{
                // data: [1,2,3],
                 data: <%= @data1_arrey.reverse %>,
