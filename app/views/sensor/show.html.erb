@@ -22,7 +22,7 @@
         <td><%= val.value2 %></td>
       </tr>
     <%  i=i+1 %>
-    <%  .push((val.created_at+7200).time.to_s) %>
+    <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
     <%  @data1_arrey.push(val.value1) %>
     <%  @data2_arrey.push(val.value2) %>
 
