@@ -42,7 +42,7 @@
         data: {
            // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
             labels: [
-            <% @label_arrey.each do |val| %>
+            <% @label_arrey.reverse.each do |val| %>
                 "<%= val %>",
             <% end %>
             ],
