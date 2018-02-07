@@ -21,6 +21,11 @@ class SensorController < ApplicationController
         @param_value[1]="Давление, мм/р.т."
       end
 
+      if @sensor.model == "dallas"
+        @param_value[0]="Температура, С"
+        @param_value[1]="Температура, F"
+      end
+
       @sensor_values = @sensor.sensor_values.order("created_at DESC").limit(100)
 
     end
@@ -30,8 +35,8 @@ class SensorController < ApplicationController
     if params[:sensor].present?
       @sensor = Sensor.find_by_sensor(Base64.decode64(params[:sensor]))
       if @sensor
-        puts "Name sensor:"+@sensor.name
-        puts "Temperatuta:"+params[:param1]+" Humidity:"+params[:param2]
+       #puts "Name sensor:"+@sensor.name
+       #puts "Value1:"+params[:param1]+" Value2:"+params[:param2]
 
         @value = @sensor.sensor_values.build(sensor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
         @value.save
