@@ -6,6 +6,7 @@ class SensorController < ApplicationController
   end
 
   def show
+#Date.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i)
     @sensor = Sensor.find(params[:id])
 
     if @sensor

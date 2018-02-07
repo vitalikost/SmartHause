@@ -17,6 +17,7 @@
       <div id="sb-search" class="sb-search">
         <div>
         <%= form_tag(sensor_show_path, method: "get") do %>
+          <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
           <%= label_tag("Начальна дата:") %>
           <%= select_datetime Date.today, prefix: :start_date %>
           <p>
