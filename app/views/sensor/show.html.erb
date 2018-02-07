@@ -10,16 +10,33 @@
 
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h2>Параметры:</h2>
+
+    <div class="search-box">
+      <div id="sb-search" class="sb-search">
+        <div>
+        <%= form_tag(sensor_show_path, method: "get") do %>
+          <%= label_tag("Начальна дата:") %>
+          <%= select_datetime Date.today, prefix: :start_date %>
+          <p>
+          <%= label_tag("Конечная дата:") %>
+          <%= select_datetime Date.today, prefix: :end_date %>
+          <p>
+          <%= submit_tag "Показать", name: nil, class: "sb-search-submit" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="col-md-9">
+  <div class="col-md-8">
     <section class="row">
       <canvas id="line-chart" width="450" height="320"></canvas>
 
       <table id="sensor_values" class="table">
         <tr>
-          <th> Время:</th>
+          <th> Время:</th>or
           <th><%= @param_value[0] %></th>
           <th><%= @param_value[1] %></th>
         </tr>
