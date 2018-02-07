@@ -1,31 +1,51 @@
-<h1><%= @sensor.name %></h1>
 
-<canvas id="line-chart" width="450" height="320"></canvas>
+<div class="row">
+  <div class="col-md-12">
+    <header>
+      <h1 class="text-center"><%= @sensor.name %></h1>
+    </header>
+  </div>
+</div>
 
-<table id="sensor_values" class="table">
-  <tr>
-    <th width="150">Время:</th>
-    <th width="50"><%= @param_value[0] %></th>
-    <th width="50"><%= @param_value[1] %></th>
-  </tr>
 
-  <%  @label_arrey = [] %>
-  <%  @data1_arrey = [] %>
-  <%  @data2_arrey = [] %>
-  <%  i=0 %>
-  <% @sensor_values.each do |val| %>
-      <tr>
-        <td><%= val.created_at+7200 %></td>
-        <td><%= val.value1 %></td>
-        <td><%= val.value2 %></td>
-      </tr>
-    <%  i=i+1 %>
-    <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
-    <%  @data1_arrey.push(val.value1) %>
-    <%  @data2_arrey.push(val.value2) %>
-<% end %>
 
-</table>
+<div class="row">
+  <div class="col-md-3">
+    <h2>Параметры:</h2>
+  </div>
+  <div class="col-md-9">
+    <section class="row">
+      <canvas id="line-chart" width="450" height="320"></canvas>
+
+      <table id="sensor_values" class="table">
+        <tr>
+          <th> Время:</th>
+          <th><%= @param_value[0] %></th>
+          <th><%= @param_value[1] %></th>
+        </tr>
+
+        <%  @label_arrey = [] %>
+        <%  @data1_arrey = [] %>
+        <%  @data2_arrey = [] %>
+        <% @sensor_values.each do |val| %>
+          <tr>
+            <td><%= val.created_at+7200 %></td>
+            <td><%= val.value1 %></td>
+            <td><%= val.value2 %></td>
+          </tr>
+          <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
+          <%  @data1_arrey.push(val.value1) %>
+          <%  @data2_arrey.push(val.value2) %>
+        <% end %>
+
+      </table>
+    </section>
+
+
+  </div>
+</div>
+
+
 
 
 
