@@ -36,38 +36,40 @@
   <div class="col-md-8">
     <section class="row">
       <canvas id="line-chart" width="450" height="320"></canvas>
-
-      <table id="sensor_values" class="table">
-        <tr>
-          <th> Время:</th>or
-          <th><%= @param_value[0] %></th>
-          <th><%= @param_value[1] %></th>
-        </tr>
-
-        <%  @label_arrey = [] %>
-        <%  @data1_arrey = [] %>
-        <%  @data2_arrey = [] %>
-        <% @sensor_values.each do |val| %>
-          <tr>
-            <td><%= val.created_at+7200 %></td>
-            <td><%= val.value1 %></td>
-            <td><%= val.value2 %></td>
-          </tr>
-          <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
-          <%  @data1_arrey.push(val.value1) %>
-          <%  @data2_arrey.push(val.value2) %>
-        <% end %>
-
-      </table>
     </section>
 
 
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
 
+    <table id="sensor_values" class="table">
+      <tr>
+        <th> Время:</th>
+        <th><%= @param_value[0] %></th>
+        <th><%= @param_value[1] %></th>
+      </tr>
 
+      <%  @label_arrey = [] %>
+      <%  @data1_arrey = [] %>
+      <%  @data2_arrey = [] %>
+      <% @sensor_values.each do |val| %>
+        <tr>
+          <td><%= val.created_at+7200 %></td>
+          <td><%= val.value1 %></td>
+          <td><%= val.value2 %></td>
+        </tr>
+        <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
+        <%  @data1_arrey.push(val.value1) %>
+        <%  @data2_arrey.push(val.value2) %>
+      <% end %>
 
+    </table>
+
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script>
