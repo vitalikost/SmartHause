@@ -71,36 +71,5 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script>
-
-        new Chart(document.getElementById("line-chart"), {
-        type: 'line',
-        data: {
-           // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-            labels: [
-            <% @label_arrey.reverse.each do |val| %>
-                "<%= val %>",
-            <% end %>
-            ],
-            datasets: [{
-               // data: [1,2,3],
-                data: <%= @data1_arrey.reverse %>,
-
-                // label: "Africa",
-                label: "<%= @param_value[0] %>",
-
-                borderColor: "#3e95cd",
-                fill: false
-            }
-
-            ]
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Показники:'
-            }
-        }
-    });
-</script>
+<span id="chart-data" data-labels="<%= @label_arrey.reverse.map(&:to_s) %>"
+data-values="<%= @data1_arrey.reverse %>" data-label="<%= @param_value[0] %>"></span>

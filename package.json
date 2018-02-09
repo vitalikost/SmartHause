@@ -1,5 +1,9 @@
 {
   "name": "SmartHause",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "3",
+    "chart.js": "^2.7.1",
+    "jquery": "^3.3.1"
+  }
 }

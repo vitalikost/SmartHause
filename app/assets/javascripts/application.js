@@ -12,4 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery/dist/jquery.js
+//= require chart.js/dist/Chart
+//= require mychart
+
+
