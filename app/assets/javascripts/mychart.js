@@ -5,6 +5,10 @@ var labels = $('#chart-data').data('labels');
 var values = $('#chart-data').data('values');
 var label = $('#chart-data').data('label');
 if (labels != null) {
+
+
+    setInterval(function() {location.reload()}, 1000*60*5);
+
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
