@@ -11,8 +11,8 @@ class SensorController < ApplicationController
     @sensor = Sensor.find(params[:id])
 
     if params[:start_date].present?
-      @start_date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,params[:start_date][:hour].to_i, params[:start_date][:minute].to_i )
-      @end_date = DateTime.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i,params[:end_date][:hour].to_i, params[:end_date][:minute].to_i )
+      @start_date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,0,"-2" )
+      @end_date = DateTime.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i,params[:end_date][:hour].to_i, params[:end_date][:minute].to_i,0,"-2" )
      # puts @start_date
      # puts @end_date
     end
