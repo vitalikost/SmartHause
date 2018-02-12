@@ -32,13 +32,13 @@
       </strong>
       <p>
       <strong>
-        Последнии данные:<%= (@sensor_values.last.created_at+7200).to_s.slice(0,19) %>
+        Последнии данные:<%= (@sensor_values.first.created_at+7200).to_s.slice(0,19) %>
       </strong>
       <p>
       <div>
-        <%= @param_value[0] %> : <%= @sensor_values.last.value1 %>
+        <%= @param_value[0] %> : <%= @sensor_values.first.value1 %>
         <p>
-        <%= @param_value[1] %> : <%= @sensor_values.last.value2 %>
+        <%= @param_value[1] %> : <%= @sensor_values.first.value2 %>
       </div>
     </div>
   <%= link_to 'На главную', root_path %>
