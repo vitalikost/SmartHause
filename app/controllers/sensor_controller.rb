@@ -41,6 +41,8 @@ class SensorController < ApplicationController
                                                                               {:start_date => @start_date, :end_date => @end_date})
       else
         @sensor_values = @sensor.sensor_values.order("created_at DESC").limit(100)
+        @start_date = DateTime.current.beginning_of_day
+        @end_date = DateTime.current.end_of_day
       end
 
 

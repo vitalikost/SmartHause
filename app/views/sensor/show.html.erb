@@ -13,24 +13,20 @@
   <div class="col-md-4">
     <h2>Параметры:</h2>
 
-    <div class="search-box">
-      <div id="sb-search" class="sb-search">
         <div>
         <%= form_tag(sensor_show_path, method: "get") do %>
           <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
           <%= label_tag("Начальна дата:") %>
           <p>
-          <%= select_datetime Date.today, prefix: :start_date %>
+          <%= select_datetime @start_date, prefix: :start_date %>
           <p>
           <%= label_tag("Конечная дата:") %>
           <p>
-          <%= select_datetime Date.today, prefix: :end_date %>
+          <%= select_datetime @end_date, prefix: :end_date %>
           <p>
-          <%= submit_tag "Показать", name: nil, class: "sb-search-submit" %>
+          <%= submit_tag "Показать", name: nil %>
         <% end %>
         </div>
-      </div>
-    </div>
 
   </div>
   <div class="col-md-8">
