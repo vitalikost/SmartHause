@@ -12,8 +12,7 @@
 <div class="row">
   <div class="col-md-4">
     <h2>Параметры:</h2>
-
-        <div>
+      <div>
         <%= form_tag(sensor_show_path, method: "get") do %>
           <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
           <%= label_tag("Начальна дата:") %>
@@ -26,7 +25,23 @@
           <p>
           <%= submit_tag "Показать", name: nil %>
         <% end %>
-        </div>
+      </div>
+    <div>
+      <strong>
+        Количество записей:<%= @sensor_values.count %>
+      </strong>
+      <p>
+      <strong>
+        Последнии данные:<%= (@sensor_values.last.created_at+7200).to_s.slice(0,19) %>
+      </strong>
+      <p>
+      <div>
+        <%= @param_value[0] %> : <%= @sensor_values.last.value1 %>
+        <p>
+        <%= @param_value[1] %> : <%= @sensor_values.last.value2 %>
+      </div>
+    </div>
+  <%= link_to 'На главную', root_path %>
 
   </div>
   <div class="col-md-8">
@@ -53,11 +68,11 @@
       <%  @data2_arrey = [] %>
       <% @sensor_values.each do |val| %>
         <tr>
-          <td><%= val.created_at+7200 %></td>
+          <td><%= (val.created_at+7200).to_s.slice(0,19) %></td>
           <td><%= val.value1 %></td>
           <td><%= val.value2 %></td>
         </tr>
-        <%  @label_arrey.push((val.created_at+7200).time.to_s) %>
+        <%  @label_arrey.push((val.created_at+7200).time.to_s.slice(0,19)) %>
         <%  @data1_arrey.push(val.value1) %>
         <%  @data2_arrey.push(val.value2) %>
       <% end %>

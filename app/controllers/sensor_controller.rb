@@ -6,20 +6,12 @@ class SensorController < ApplicationController
   end
 
   def show
-   # @test = Date.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i)
-   # puts(@test)
     @sensor = Sensor.find(params[:id])
-
     if params[:start_date].present?
       @start_date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,0,"+2" )
       @end_date = DateTime.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i,params[:end_date][:hour].to_i, params[:end_date][:minute].to_i,0,"+2" )
-     # puts @start_date
-     # puts @end_date
     end
-
-
     if @sensor
-
       @param_value = ["",""]
       if @sensor.model == "dht"
         @param_value[0]="Температура, С"
@@ -53,9 +45,6 @@ class SensorController < ApplicationController
     if params[:sensor].present?
       @sensor = Sensor.find_by_sensor(Base64.decode64(params[:sensor]))
       if @sensor
-       #puts "Name sensor:"+@sensor.name
-       #puts "Value1:"+params[:param1]+" Value2:"+params[:param2]
-
         @value = @sensor.sensor_values.build(sensor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
         @value.save
       end
