@@ -12,7 +12,7 @@
 <div class="row">
   <div class="col-md-4">
     <h2>Параметры:</h2>
-      <div>
+      <div class="row">
         <%= form_tag(sensor_show_path, method: "get") do %>
           <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
           <%= label_tag("Начальна дата:") %>
@@ -22,11 +22,13 @@
           <%= label_tag("Конечная дата:") %>
           <p>
           <%= select_datetime @end_date, prefix: :end_date %>
-          <p>
+            <p><div> </div><p>
           <%= submit_tag "Показать", name: nil %>
         <% end %>
       </div>
-    <div>
+
+  <% if @sensor_values.count > 0 %>
+    <div class="row" >
       <strong>
         Количество записей:<%= @sensor_values.count %>
       </strong>
@@ -41,6 +43,7 @@
         <%= @param_value[1] %> : <%= @sensor_values.first.value2 %>
       </div>
     </div>
+  <% end %>
   <%= link_to 'На главную', root_path %>
 
   </div>
