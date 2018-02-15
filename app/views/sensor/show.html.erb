@@ -49,9 +49,11 @@
   </div>
   <div class="col-md-8">
     <section class="row">
-      <canvas id="line-chart" width="450" height="320"></canvas>
+      <canvas id="line-chart1" width="450" height="320"></canvas>
     </section>
-
+    <section class="row">
+      <canvas id="line-chart2" width="450" height="320"></canvas>
+    </section>
 
   </div>
 </div>
@@ -86,4 +88,5 @@
 </div>
 
 <span id="chart-data" data-labels="<%= @label_arrey.reverse.map(&:to_s) %>"
-data-values="<%= @data1_arrey.reverse %>" data-label="<%= @param_value[0] %>"></span>
+data-values1="<%= @data1_arrey.reverse %>" data-label1="<%= @param_value[0] %>"
+data-values2="<%= @data2_arrey.reverse %>" data-label2="<%= @param_value[1] %>"></span>
