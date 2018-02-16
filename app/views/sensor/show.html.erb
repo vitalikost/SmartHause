@@ -14,17 +14,17 @@
   </div>
   <div class="col-md-3">
     <strong>
-      <%= (@sensor.sensor_values.first.created_at+7200).to_s.slice(0,19) %>
+      <%= (@sensor.sensor_values.last.created_at+7200).to_s.slice(0,19) %>
     </strong>
   </div>
   <div class="col-md-3">
     <strong>
-      <%= @param_value[0] %> : <%= @sensor.sensor_values.first.value1 %>
+      <%= @param_value[0] %> : <%= @sensor.sensor_values.last.value1 %>
     </strong>
   </div>
   <div class="col-md-3">
     <strong>
-      <%= @param_value[1] %> : <%= @sensor.sensor_values.first.value2 %>
+      <%= @param_value[1] %> : <%= @sensor.sensor_values.last.value2 %>
     </strong>
   </div>
 </div>
@@ -62,7 +62,7 @@
             <strong>
               Конец:<%= (@sensor_values.first.created_at+7200).to_s.slice(0,19) %>
             </strong>
-       
+
         </div>
     <% end %>
 
