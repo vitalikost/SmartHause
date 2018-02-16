@@ -8,6 +8,26 @@
 </div>
 
 
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to '< - Главная', root_path %>
+  </div>
+  <div class="col-md-3">
+    <strong>
+      <%= (@sensor.sensor_values.first.created_at+7200).to_s.slice(0,19) %>
+    </strong>
+  </div>
+  <div class="col-md-3">
+    <strong>
+      <%= @param_value[0] %> : <%= @sensor.sensor_values.first.value1 %>
+    </strong>
+  </div>
+  <div class="col-md-3">
+    <strong>
+      <%= @param_value[1] %> : <%= @sensor.sensor_values.first.value2 %>
+    </strong>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-8">
@@ -36,17 +56,16 @@
           </strong>
           <p>
             <strong>
-              Последнии данные:<%= (@sensor_values.first.created_at+7200).to_s.slice(0,19) %>
+              Начало:<%= (@sensor_values.last.created_at+7200).to_s.slice(0,19) %>
             </strong>
           <p>
-            <div>
-              <%= @param_value[0] %> : <%= @sensor_values.first.value1 %>
-          <p>
-            <%= @param_value[1] %> : <%= @sensor_values.first.value2 %>
+            <strong>
+              Конец:<%= (@sensor_values.first.created_at+7200).to_s.slice(0,19) %>
+            </strong>
+       
         </div>
-
     <% end %>
-    <%= link_to 'На главную', root_path %>
+
   </div>
 </div>
 
