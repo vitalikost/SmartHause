@@ -1,8 +1,42 @@
-<h1>Доступные сенсоры</h1>
+<div class="row">
+  <div class="col-md-12">
+    <header>
+      <h1 class="text-center">Мониторинг датчиков:</h1>
+    </header>
+  </div>
+</div>
 
-    <% @sensors.each do |sensor| %>
-    <%= link_to sensor.name, sensor_show_path(id:sensor) %>
-    <p>
+<div class="row">
+  <div class="col-md-12">
+    <table id="sensor_values" class="table">
+      <tr>
+        <th>Датчик</th>
+        <th>Тип</th>
+        <th>Статус</th>
+        <th>Последнии данные</th>
+      </tr>
+      <% @sensors.each do |sensor| %>
+        <tr>
+          <td>
+            <%= link_to sensor.name, sensor_show_path(id:sensor) %>
+          </td>
+          <td>
+            <%= sensor.model  %>
+          </td>
+          <td style="color: green">
+            Включен
+          </td>
+          <td>
+            <%= (sensor.sensor_values.last.created_at+7200).to_s.slice(0,19) %>
+          </td>
+        </tr>
     <% end %>
+    </table>
+  </div>
+</div>
+
+
+
+
 
 
