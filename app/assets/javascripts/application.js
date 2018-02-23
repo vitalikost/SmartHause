@@ -14,6 +14,8 @@
 //= require turbolinks
 //= require jquery/dist/jquery.js
 //= require chart.js/dist/Chart
+//= require jquery-paginate.js
 //= require mychart
+
 
 
