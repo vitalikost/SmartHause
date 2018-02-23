@@ -7,7 +7,7 @@ var label1 = $('#chart-data').data('label1');
 var values2 = $('#chart-data').data('values2');
 var label2 = $('#chart-data').data('label2');
 
-$('#sensor_values').paginate({ limit: 3 });
+$('#sensor_values').paginate({ limit: 10 });
 
 if (labels != null) {
 
