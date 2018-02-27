@@ -95,11 +95,14 @@
   <div class="col-md-12">
 
     <table id="sensor_values" class="table">
+      <thead>
       <tr>
         <th> Время:</th>
         <th><%= @param_value[0] %></th>
         <th><%= @param_value[1] %></th>
       </tr>
+      </thead>
+      <tbody>
 
       <%  @label_arrey = [] %>
       <%  @data1_arrey = [] %>
@@ -114,7 +117,7 @@
         <%  @data1_arrey.push(val.value1) %>
         <%  @data2_arrey.push(val.value2) %>
       <% end %>
-
+      </tbody>
     </table>
 
   </div>
