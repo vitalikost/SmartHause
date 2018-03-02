@@ -19,7 +19,7 @@
   </div>
   <div class="col-md-3">
     <strong>
-      <%= (@sensor.sensor_values.last.created_at+7200).to_s.slice(0,19) %>
+      <%= (@sensor.sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
     </strong>
   </div>
   <div class="col-md-3">
@@ -57,15 +57,19 @@
     <% if @sensor_values.count > 0 %>
         <div class="row" >
           <strong>
+            Часовой пояс:<%= @sensor.time_zona>0 ? "+"+@sensor.time_zona.to_s : @sensor.time_zona.to_s  %>
+          </strong>
+          <p>
+          <strong>
             Количество записей:<%= @sensor_values.count %>
           </strong>
           <p>
             <strong>
-              Начало:<%= (@sensor_values.last.created_at+7200).to_s.slice(0,19) %>
+              Начало:<%= (@sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
             </strong>
           <p>
             <strong>
-              Конец:<%= (@sensor_values.first.created_at+7200).to_s.slice(0,19) %>
+              Конец:<%= (@sensor_values.first.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
             </strong>
 
         </div>
@@ -109,11 +113,11 @@
       <%  @data2_arrey = [] %>
       <% @sensor_values.each do |val| %>
         <tr>
-          <td><%= (val.created_at+7200).to_s.slice(0,19) %></td>
+          <td><%= (val.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %></td>
           <td><%= val.value1 %></td>
           <td><%= val.value2 %></td>
         </tr>
-        <%  @label_arrey.push((val.created_at+7200).time.to_s.slice(0,19)) %>
+        <%  @label_arrey.push((val.created_at+@sensor.time_zona*3600).time.to_s.slice(0,19)) %>
         <%  @data1_arrey.push(val.value1) %>
         <%  @data2_arrey.push(val.value2) %>
       <% end %>
