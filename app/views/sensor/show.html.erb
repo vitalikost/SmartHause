@@ -40,15 +40,16 @@
       <div class="row">
         <%= form_tag(sensor_show_path, method: "get") do %>
           <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
-          <%= label_tag("Начальна дата:") %>
-          <p>
-          <%= select_datetime @start_date, prefix: :start_date %>
-          <p>
-          <%= label_tag("Конечная дата:") %>
-          <p>
-          <%= select_datetime @end_date, prefix: :end_date %>
-            <p><div> </div><p>
-          <%= submit_tag "Показать", name: nil,class:"btn btn-primary" %>
+            <div class="form-group">
+              <%= label_tag("Начальна дата:") %>
+              <%= select_datetime @start_date, prefix: :start_date,class:"form-control" %>
+            </div>
+            <div class="form-group">
+              <%= label_tag("Конечная дата:") %>
+              <%= select_datetime @end_date, prefix: :end_date,class:"form-control"  %>
+            </div>
+
+          <%= submit_tag "Показать", name: nil,class: 'btn btn-default btn-lg btn-submit' %>
         <% end %>
       </div>
   </div>
@@ -56,22 +57,12 @@
     <h2>Информация:</h2>
     <% if @sensor_values.count > 0 %>
         <div class="row" >
-          <strong>
-            Часовой пояс:<%= @sensor.time_zona>0 ? "+"+@sensor.time_zona.to_s : @sensor.time_zona.to_s  %>
-          </strong>
-          <p>
-          <strong>
-            Количество записей:<%= @sensor_values.count %>
-          </strong>
-          <p>
-            <strong>
-              Начало:<%= (@sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
-            </strong>
-          <p>
-            <strong>
-              Конец:<%= (@sensor_values.first.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
-            </strong>
-
+          <ul class="list-group">
+            <li class="list-group-item">Часовой пояс:<%= @sensor.time_zona>0 ? "+"+@sensor.time_zona.to_s : @sensor.time_zona.to_s  %></li>
+            <li class="list-group-item">Количество записей:<%= @sensor_values.count %></li>
+            <li class="list-group-item">Начало:<%= (@sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %></li>
+            <li class="list-group-item">Конец:<%= (@sensor_values.first.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %></li>
+          </ul>
         </div>
     <% end %>
 
