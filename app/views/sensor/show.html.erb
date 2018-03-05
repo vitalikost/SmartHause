@@ -35,25 +35,46 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-5">
     <h2>За период:</h2>
       <div class="row">
-        <%= form_tag(sensor_show_path, method: "get") do %>
-          <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
-            <div class="form-group">
-              <%= label_tag("Начальна дата:") %>
-              <%= select_datetime @start_date, prefix: :start_date,class:"form-control" %>
-            </div>
-            <div class="form-group">
-              <%= label_tag("Конечная дата:") %>
-              <%= select_datetime @end_date, prefix: :end_date,class:"form-control"  %>
-            </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= form_tag(sensor_show_path, method: "get") do %>
+                <%= hidden_field_tag :id, @sensor.id, prefix: :id %>
+                <div class="form-group">
+                  <%= label_tag("Начальна дата:") %>
+                  <%= select_datetime @start_date, prefix: :start_date,class:"form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= label_tag("Конечная дата:") %>
+                  <%= select_datetime @end_date, prefix: :end_date,class:"form-control"  %>
+                </div>
 
-          <%= submit_tag "Показать", name: nil,class: 'btn btn-default btn-lg btn-submit' %>
-        <% end %>
+                <%= submit_tag "Показать", name: nil,class: 'btn btn-default btn-lg btn-submit' %>
+            <% end %>
+          </li>
+        </ul>
       </div>
   </div>
-  <div class="col-md-4">
+
+  <div class="col-md-1">
+
+  </div>
+
+  <div class="col-md-3">
+    <h2>API:</h2>
+    <div class="row" >
+      <ul class="list-group">
+        <li class="list-group-item">sensor: Код сенсора</li>
+        <li class="list-group-item">limit: Количество записей, по умол. 100 </li>
+        <li class="list-group-item">Пример:</li>
+        <li class="list-group-item"><%= link_to sensor_api_path(sensor:@sensor,limit:5).to_s, sensor_api_path(sensor:@sensor,limit:5) %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-3">
     <h2>Информация:</h2>
     <% if @sensor_values.count > 0 %>
         <div class="row" >
