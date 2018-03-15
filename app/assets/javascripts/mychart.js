@@ -28,7 +28,8 @@ if (labels != null) {
                 borderColor: "#3e95cd",
                 fill: true,
                 backgroundColor:"#3e95cd",
-                cubicInterpolationMode:"monotone"
+                cubicInterpolationMode:"monotone",
+                lineTension: 0,
             }
 
             ]
@@ -56,6 +57,7 @@ if (labels != null) {
                 fill: true,
                 backgroundColor:"#4bcd39",
                 cubicInterpolationMode:"monotone",
+                lineTension: 0,
             }
 
             ]
