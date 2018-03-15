@@ -1,24 +1,4 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**Идея:** Реализовать сервис по хранению информации с погодных датчиков.
+Получение актуальной, а также историю по контетному датчику.
+Визуализировать данние с датчиков, не плохо сделать возможность экспотра, а также подключение стороних преложений для получениея данних с сервиса. 
