@@ -26,7 +26,9 @@ if (labels != null) {
                 label: label1,
 
                 borderColor: "#3e95cd",
-                fill: false
+                fill: true,
+                backgroundColor:"#3e95cd",
+                cubicInterpolationMode:"monotone"
             }
 
             ]
@@ -50,8 +52,10 @@ if (labels != null) {
                 // label: "Africa",
                 label: label2,
 
-                borderColor: "#3e95cd",
-                fill: false
+                borderColor: "#4bcd39",
+                fill: true,
+                backgroundColor:"#4bcd39",
+                cubicInterpolationMode:"monotone",
             }
 
             ]
