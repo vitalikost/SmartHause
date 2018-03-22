@@ -27,7 +27,9 @@
             Включен
           </td>
           <td>
-            <%= (sensor.sensor_values.last.created_at+sensor.time_zona*3600).to_s.slice(0,19) %>
+            <% if sensor.sensor_values.last.present?%>
+              <%= (sensor.sensor_values.last.created_at+sensor.time_zona*3600).to_s.slice(0,19) %>
+            <% end%>
           </td>
         </tr>
     <% end %>

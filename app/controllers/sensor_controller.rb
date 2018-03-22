@@ -39,10 +39,10 @@ class SensorController < ApplicationController
         end
       end
     else
-      render plain: "stat:error data"
+      render plain: "status:error data"
     end
   rescue ActiveRecord::RecordNotFound
-    render plain: "stat:invalid  id sensor"
+    render plain: "status:invalid  id sensor"
   end
 
   def new
@@ -52,13 +52,14 @@ class SensorController < ApplicationController
         @value = @sensor.sensor_values.build(sensor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
         @value.save
       end
-      render plain: "stat:good\n"+"date:"+Date.today.monday.to_s+
-          "\ntime:"+Time.new.strftime("%H:%M:%S").to_s
+      render plain: "status:good\n"+"date:"+Date.today.monday.to_s+
+          "\ntime:"+Time.new.strftime("%H:%M:%S").to_s+
+          "\ngmt:"+@sensor.time_zona;
     else
-      render plain: "stat:error data"
+      render plain: "status:error data"
     end
   rescue ActiveRecord::RecordNotFound
-    render plain: "stat:erorr id sendor"
+    render plain: "status:erorr id sendor"
   end
 
   def api
