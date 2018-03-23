@@ -15,7 +15,7 @@ if (labels != null) {
     setInterval(function() {location.reload()}, 1000*60*5);
 
     new Chart(document.getElementById("line-chart1"), {
-        type: 'line',
+        type: 'bar',
         data: {
             // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
             labels: labels,
@@ -43,7 +43,7 @@ if (labels != null) {
     });
 
     new Chart(document.getElementById("line-chart2"), {
-        type: 'line',
+        type: 'bar',
         data: {
             // labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
             labels: labels,
