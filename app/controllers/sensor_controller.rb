@@ -54,7 +54,7 @@ class SensorController < ApplicationController
       end
       render plain: "status:good\n"+"date:"+Date.today.monday.to_s+
           "\ntime:"+Time.new.strftime("%H:%M:%S").to_s+
-          "\ngmt:"+@sensor.time_zona;
+          "\ngmt:"+@sensor.time_zona.to_s
     else
       render plain: "status:error data"
     end
