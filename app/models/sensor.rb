@@ -1,4 +1,4 @@
 class Sensor < ApplicationRecord
   enum model: [:dht,:dallas,:bmp180]
-  has_many :sensor_values
+  has_many :sensor_values,dependent: :destroy
 end
