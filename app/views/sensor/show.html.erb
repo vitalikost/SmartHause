@@ -19,17 +19,23 @@
   </div>
   <div class="col-md-3">
     <strong>
-      <%= (@sensor.sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
+      <% if @sensor.sensor_values.last.present?%>
+        <%= (@sensor.sensor_values.last.created_at+@sensor.time_zona*3600).to_s.slice(0,19) %>
+      <% end %>
     </strong>
   </div>
   <div class="col-md-3">
     <strong>
-      <%= @param_value[0] %> : <%= @sensor.sensor_values.last.value1 %>
+      <% if @sensor.sensor_values.last.present?%>
+        <%= @param_value[0] %> : <%= @sensor.sensor_values.last.value1 %>
+      <% end %>
     </strong>
   </div>
   <div class="col-md-3">
     <strong>
-      <%= @param_value[1] %> : <%= @sensor.sensor_values.last.value2 %>
+      <% if @sensor.sensor_values.last.present?%>
+        <%= @param_value[1] %> : <%= @sensor.sensor_values.last.value2 %>
+      <% end %>
     </strong>
   </div>
 </div>
@@ -90,17 +96,42 @@
   </div>
 </div>
 
+
 <div class="row">
   <div class="col-md-6">
       <section class="row">
         <canvas id="line-chart1" width="450" height="320"></canvas>
       </section>
+
+      <section class="row">
+        <% if @sensor_values.count > 0 %>
+          <% @value1 = @sensor_values.map{|jo| jo.value1}  %>
+          <ul class="list-group">
+            <li class="list-group-item">Минимальное значение:<%= @sensor_values.minimum("value1").to_s %></li>
+            <li class="list-group-item">Максимальное значение:<%= @sensor_values.maximum("value1").to_s %></li>
+            <li class="list-group-item">Среднее значение:<%= (@value1.inject(0){ |sum, i| sum + i.abs }.to_f) / @value1.size %></li>
+        </ul>
+        <% end %>
+      </section>
+
   </div>
 
   <div class="col-md-6">
       <section class="row">
         <canvas id="line-chart2" width="450" height="320"></canvas>
       </section>
+
+      <section class="row">
+        <% if @sensor_values.count > 0 %>
+            <% @value2 = @sensor_values.map{|jo| jo.value2}  %>
+            <ul class="list-group">
+              <li class="list-group-item">Минимальное значение:<%= @sensor_values.minimum("value2").to_s %></li>
+              <li class="list-group-item">Максимальное значение:<%= @sensor_values.maximum("value2").to_s %></li>
+              <li class="list-group-item">Среднее значение:<%= (@value2.inject(0){ |sum, i| sum + i.abs }.to_f) / @value2.size %></li>
+            </ul>
+        <% end %>
+      </section>
+
   </div>
 
 </div>
