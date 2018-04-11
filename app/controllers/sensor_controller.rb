@@ -9,8 +9,8 @@ class SensorController < ApplicationController
     if params[:id].present?
       @sensor = Sensor.find(params[:id])
       if params[:start_date].present?
-        @start_date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,0,"+2" )
-        @end_date = DateTime.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i,params[:end_date][:hour].to_i, params[:end_date][:minute].to_i,0,"+2" )
+        @start_date = DateTime.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i,params[:start_date][:hour].to_i, params[:start_date][:minute].to_i,0,"+"+@sensor.time_zona.to_s )
+        @end_date = DateTime.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i,params[:end_date][:hour].to_i, params[:end_date][:minute].to_i,0,"+"+@sensor.time_zona.to_s )
       end
       if @sensor
         @param_value = ["",""]
@@ -30,8 +30,7 @@ class SensorController < ApplicationController
         end
 
         if @start_date
-          @sensor_values = @sensor.sensor_values.order("created_at DESC").where("created_at >= :start_date AND created_at <= :end_date",
-                                                                                {:start_date => @start_date, :end_date => @end_date})
+          @sensor_values = @sensor.sensor_values.order("created_at DESC").where("created_at >= :start_date AND created_at <= :end_date", {:start_date => @start_date, :end_date => @end_date})
         else
           @sensor_values = @sensor.sensor_values.order("created_at DESC").limit(100)
           @start_date = DateTime.current.beginning_of_day
