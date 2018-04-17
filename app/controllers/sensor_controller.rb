@@ -15,18 +15,18 @@ class SensorController < ApplicationController
       if @sensor
         @param_value = ["",""]
         if @sensor.model == "dht"
-          @param_value[0]="Температура, С"
-          @param_value[1]="Влажность, %"
+          @param_value[0] = "Температура, С"
+          @param_value[1] = "Влажность, %"
         end
 
         if @sensor.model == "bmp180"
-          @param_value[0]="Температура, С"
-          @param_value[1]="Давление, мм/р.т."
+          @param_value[0] = "Температура, С"
+          @param_value[1] = "Давление, мм/р.т."
         end
 
         if @sensor.model == "dallas"
-          @param_value[0]="Температура, С"
-          @param_value[1]="Температура, F"
+          @param_value[0] = "Температура, С"
+          @param_value[1] = "Температура, F"
         end
 
         if @start_date
@@ -51,9 +51,9 @@ class SensorController < ApplicationController
         @value = @sensor.sensor_values.build(sensor_id: @sensor, value1: params[:param1].to_f,value2: params[:param2].to_f)
         @value.save
       end
-      render plain: "status:good\n"+"date:"+Date.today.monday.to_s+
-          "\ntime:"+Time.new.strftime("%H:%M:%S").to_s+
-          "\ngmt:"+@sensor.time_zona.to_s
+      render plain: "status:good\n" + "date:" + Date.today.monday.to_s +
+          "\ntime:" + Time.new.strftime("%H:%M:%S").to_s +
+          "\ngmt:" + @sensor.time_zona.to_s
     else
       render plain: "status:error data"
     end
@@ -63,7 +63,6 @@ class SensorController < ApplicationController
 
   def api
     if params[:sensor].present?
-#      @sensor = Sensor.find_by_sensor(Base64.decode64(params[:sensor]))
       @sensor = Sensor.find(params[:sensor])
       @limit = 100
       if params[:limit].present?
@@ -79,9 +78,4 @@ class SensorController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     render plain: "invalid adress sensor"
   end
-
-
-
-
 end
-
